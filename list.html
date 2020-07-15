@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Online Grocery List</title>
+	<link rel="stylesheet" type="text/css" href="list.css">
+</head>
+<body>
+	<header>
+		<div class="flex-container">
+			<div class="header-container">
+				<!-- Think about making the page navigation tabs a dropdown menu -->
+				<div class="nav-bar-container">
+					<h1>Grocery List</h1>
+				</div>
+			</div>
+
+			<h3>@HangedTarotMan</h3>
+		</div>
+	</header>
+	<main>
+		<!-- I could do some really fun stuff like having icons or animated gifs depending on the category added. IE meat get hamburger being flipped or etc. -->
+
+		<!-- After finishing the critical/main logic, I should consider implementing an owl carousel slider for the various categories either swapping entire categories in and out OR simply swapping the contents of each category individually (like this: https://codepen.io/clarklab/pen/ByWjxy) -->
+		<section>
+			<div class="flex-container">	
+				<div class="grocery-category">
+					<div class="grocery-type">
+						Meat
+					</div>
+
+					<!-- NOTE: IMPLEMENT CSS STYLING/COOL LOOKS AS NEEDED BY PROGRAMMING REQUIREMENTS -->
+					<div class="grocery-list-container">
+						<ul>
+							<li>Chicken</li>
+							<li>Ground Beef</li>
+							<li>Ham</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="grocery-category">
+					<div class="grocery-type">
+						Seafood
+					</div>
+
+					<div class="grocery-list-container">
+						<ul>
+							<li>Salmon</li>
+							<li>Crab</li>
+							<li>Halibut</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="grocery-category">
+					<div class="grocery-type">
+						Vegetables
+					</div>
+
+					<div class="grocery-list-container">
+						<ul>
+							<li>Broccoli</li>
+							<li>Tomatoes</li>
+							<li>Onions</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="grocery-category">
+					<div class="grocery-type">
+						Fruits
+					</div>
+
+					<div class="grocery-list-container">
+						<ul>
+							<li>Bananas</li>
+							<li>Watermelon</li>
+							<li>Strawberries</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- following div is a nested flex container -->
+				<div class="grocery-subcategories">
+					<div class="grocery-category">
+						<div class="grocery-type">
+							Desserts
+						</div>
+
+						<div class="grocery-list-container">
+							<ul>
+								<li>Ice Cream</li>
+								<li>Cheesecake</li>
+								<li>Chocolate</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="grocery-category">
+						<div class="grocery-type">
+							Other
+						</div>
+
+						<div class="grocery-list-container">
+							<ul>
+								<li>Powder Sugar</li>
+								<li>Pancake Mix</li>
+								<li>Baking Powder</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
