@@ -1,5 +1,5 @@
 *{
-	border: 1px solid black;
+	border: 1px solid rgba(0,0,0,.2);
 }
 
 .flex-container{
@@ -43,11 +43,25 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
 }
-.addItemButton:hover {
+.addItemButton:hover{
 	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
 	background-color:#dfdfdf;
 }
-.addItemButton:active {
+.addItemButton:active{
 	position:relative;
 	top:1px;
+}
+
+.addItemButton + span{
+	padding: 2px;
+	margin-left: 2px;
+	text-align: center;
+}
+
+.addItemButton + label{
+	border: 0px;
+}
+
+.addItemButton + label input[type=text]:hover{
+	background-color: rgba(0,0,0,.1);
 }

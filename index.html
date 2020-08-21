@@ -4,8 +4,9 @@
 	<meta charset="utf-8">
 	<title>Online Grocery List</title>
 	<script type="text/javascript" src="webscraper/webScraper.js"></script>
-	<link rel="stylesheet" type="text/css" href="list.css">
-	<script type="text/javascript" src="list.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script type="text/javascript" src="groceryListClass.js"></script>
+	<script type="text/javascript" src="index.js"></script>
 </head>
 <body>
 	<header>
@@ -32,14 +33,13 @@
 					</div>
 
 					<!-- NOTE: IMPLEMENT CSS STYLING/COOL LOOKS AS NEEDED BY PROGRAMMING REQUIREMENTS -->
-					<div class="grocery-list-container">
-						<form name="meats">
+					<div class="grocery-list-container" name="meats">
 							<label><input type="checkbox" name="meats[]"/>Chicken</label>
 							<label><input type="checkbox" name="meats[]"/>Ground Beef</label>
 							<label><input type="checkbox" name="meats[]"/>Ham</label>
-						</form>
 					</div>
-					<p class="addItemButton">Add Meat</p>
+					<p class="addItemButton" id="meatsBtn">Add Meat</p>
+					<label for="meatName"><input type="text" name="meatName" placeholder="Pork"></label>
 				</div>
 
 				<div class="grocery-category">
@@ -47,14 +47,13 @@
 						Seafood
 					</div>
 
-					<div class="grocery-list-container">
-						<form name="seafoods">
+					<div class="grocery-list-container" name="seafoods">
 							<label><input type="checkbox" name="seafoods[]"/>Salmon</label>
 							<label><input type="checkbox" name="seafoods[]"/>Crab</label>
 							<label><input type="checkbox" name="seafoods[]"/>Halibut</label>
-						</form>
 					</div>
-					<p class="addItemButton">Add Seafood</p>
+					<p class="addItemButton" id="seafoodsBtn">Add Seafood</p>
+					<label for="seafoodName"><input type="text" name="seafoodName" placeholder="Tuna"></label>
 				</div>
 
 				<div class="grocery-category">
@@ -62,14 +61,13 @@
 						Vegetables
 					</div>
 
-					<div class="grocery-list-container">
-						<form name="veggies">
+					<div class="grocery-list-container" name="veggies">
 							<label><input type="checkbox" name="veggies[]"/>Broccoli</label>
 							<label><input type="checkbox" name="veggies[]"/>Tomatoes</label>
 							<label><input type="checkbox" name="veggies[]"/>Onions</label>
-						</form>
 					</div>
-					<p class="addItemButton">Add Veggies</p>
+					<p class="addItemButton" id="veggiesBtn">Add Veggies</p>
+					<label for="vegetableName"><input type="text" name="vegetableName" placeholder="Carrots"></label>
 				</div>
 
 				<div class="grocery-category">
@@ -77,14 +75,13 @@
 						Fruits
 					</div>
 
-					<div class="grocery-list-container">
-						<form name="fruits">
+					<div class="grocery-list-container" name="fruits">
 							<label><input type="checkbox" name="fruits[]"/>Bananas</label>
 							<label><input type="checkbox" name="fruits[]"/>Watermelon</label>
 							<label><input type="checkbox" name="fruits[]"/>Strawberries</label>
-						</form>
 					</div>
-					<p class="addItemButton">Add Fruits</p>
+					<p class="addItemButton" id="fruitsBtn">Add Fruits</p>
+					<label for="fruitName"><input type="text" name="fruitName" placeholder="Cherries"></label>
 				</div>
 
 				<!-- following div is a nested flex container -->
@@ -94,14 +91,13 @@
 							Desserts
 						</div>
 
-						<div class="grocery-list-container">
-							<form name="desserts">
+						<div class="grocery-list-container" name="desserts">
 								<label><input type="checkbox" name="desserts[]"/>Ice Cream</label>
 								<label><input type="checkbox" name="desserts[]"/>Cheesecake</label>
 								<label><input type="checkbox" name="desserts[]"/>Chocolate</label>
-							</form>
 						</div>
-						<p class="addItemButton">Add Desserts</p>
+						<p class="addItemButton" id="dessertsBtn">Add Desserts</p>
+						<label for="dessertName"><input type="text" name="dessertName" placeholder="Oreos"></label>
 					</div>
 
 					<div class="grocery-category">
@@ -109,14 +105,13 @@
 							Other
 						</div>
 
-						<div class="grocery-list-container">
-							<form name="others">
-								<label><input type="checkbox" name="misc[]"/>Powder Sugar</label>
-								<label><input type="checkbox" name="misc[]"/>Pancake Mix</label>
-								<label><input type="checkbox" name="misc[]"/>Baking Powder</label>
-							</form>
+						<div class="grocery-list-container" name="others">
+								<label><input type="checkbox" name="others[]"/>Powder Sugar</label>
+								<label><input type="checkbox" name="others[]"/>Pancake Mix</label>
+								<label><input type="checkbox" name="others[]"/>Baking Powder</label>
 						</div>
-						<p class="addItemButton">Add Something Else</p>
+						<p class="addItemButton" id="othersBtn">Add Something Else</p>
+						<label for="otherName"><input type="text" name="otherName" placeholder="Coca-Cola"></label>
 					</div>
 				</div>
 			</div>
