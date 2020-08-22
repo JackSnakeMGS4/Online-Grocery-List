@@ -13,7 +13,15 @@
 	align-self: center;
 	justify-content: center;
 	margin: .3rem;
-	padding: 5px;
+	padding: .75rem;
+}
+
+.grocery-list-container label{
+	display: flex;
+	padding: 3px;
+	margin: .65%;
+	text-align: center;
+	justify-content: center;
 }
 
 .grocery-category{

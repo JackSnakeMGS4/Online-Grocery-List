@@ -30,14 +30,25 @@ class MasterGroceryList{
 		console.log(this);
 		let groceryToAdd = document.querySelector(`#${this.getAttribute('id')} + label  input[type=text]`).getAttribute('value');
 		console.log(`Adding ${groceryToAdd}`);
-		// compare the calling element's id's first 3-5 letters to the list names found in listNames[]
-		// if a match is found then use the matching list name from listNames to access the corresponding groceryList HTML collection
-		// add new label and input of type text to the HTML file
-		// save the new item into the HTML collection
+
+		let charSeqToMatch = this.getAttribute('id').slice(0,4);
+		// console.log(charSeqToMatch);
+		let categoryName = MASTERGROCERYLIST.getListName(charSeqToMatch);
+		// console.log(categoryName);
+
+		let newLabel = document.createElement('LABEL');
+		newLabel.innerHTML = `<input type='checkbox' name='${categoryName}[]' value='${groceryToAdd}'>${groceryToAdd}`;
+		document.querySelector(`div[name=${categoryName}]`).appendChild(newLabel);
+
+		// Still need to update groceryLists in code to reflect the changes from adding an item to the html doc
 	}
 
 	editGroceryName(e){
 		// console.log(this, e.target.value);
 		this.setAttribute('value', e.target.value);
+	}
+
+	getListName(charSeq){
+		return this.listNames.filter(a => a.slice(0,4) === charSeq);
 	}
 }
