@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Online Grocery List</title>
+	<script src="https://kit.fontawesome.com/280830e6b4.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="webscraper/webScraper.js"></script>
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<script type="text/javascript" src="groceryListClass.js"></script>
@@ -12,13 +13,15 @@
 	<header>
 		<div class="flex-container">
 			<div class="header-container">
-				<!-- Think about making the page navigation tabs a dropdown menu -->
+				<!-- Think about making the category navigation tabs a dropdown menu -->
 				<div class="nav-bar-container">
 					<h1>Grocery List</h1>
 				</div>
-			</div>
 
-			<h3 id="twitter-handle">@HangedTarotMan</h3>
+				<h3 id="twitter-handle">@HangedTarotMan</h3>
+				<!-- Trash bin icon is for debugging purposes -->
+				<i class="fas fa-trash-alt"></i>
+			</div>
 		</div>
 	</header>
 	<main>
@@ -38,6 +41,7 @@
 							<label><input type="checkbox" name="meats[]">Ground Beef</label>
 							<label><input type="checkbox" name="meats[]">Ham</label>
 					</div>
+					<!-- All new categories must implement p tag buttons using an ID of categoryNameBtn. Remember camelCase!!! -->
 					<p class="addItemButton" id="meatsBtn">Add Meat</p>
 					<label for="meatName"><input type="text" name="meatName" placeholder="Pork"></label>
 				</div>

@@ -9,8 +9,18 @@ class MasterGroceryList{
 		for(let i = 0; i < listContainers.length; i++){
 			this.listNames.push(listContainers[i].getAttribute('name'));
 			this.groceryLists[this.listNames[i]] = {list: listContainers[i].children};
+
+			/*this.groceryLists[this.listNames[i]]
+				.checkboxes = [...document.querySelectorAll(`input[name='${this.listNames[i]}[]']`)];*/
 		}
 		this.listNames.sort();
+
+		// This is brute force code; needs to be optimized later if possible
+		for(let i = 0; i < this.listNames.length; i++){
+			for(let j = 0; j < this.groceryLists[this.listNames[i]].list.length; j++){
+				this.setCheckboxEvents(this.groceryLists[this.listNames[i]].list[j].firstElementChild);
+			}
+		}
 	}
 
 	addEventsToBtnsAndNameFields(){
@@ -27,28 +37,52 @@ class MasterGroceryList{
 	}
 
 	addGroceryItem(e){
-		console.log(this);
 		let groceryToAdd = document.querySelector(`#${this.getAttribute('id')} + label  input[type=text]`).getAttribute('value');
-		console.log(`Adding ${groceryToAdd}`);
 
-		let charSeqToMatch = this.getAttribute('id').slice(0,4);
-		// console.log(charSeqToMatch);
-		let categoryName = MASTERGROCERYLIST.getListName(charSeqToMatch);
-		// console.log(categoryName);
+		if(groceryToAdd != "" && groceryToAdd != null){
+			let charSeqToMatch = this.getAttribute('id');
+			let indexOfBtn = charSeqToMatch.indexOf('B');
+			charSeqToMatch = charSeqToMatch.slice(0, indexOfBtn);
 
-		let newLabel = document.createElement('LABEL');
-		newLabel.innerHTML = `<input type='checkbox' name='${categoryName}[]' value='${groceryToAdd}'>${groceryToAdd}`;
-		document.querySelector(`div[name=${categoryName}]`).appendChild(newLabel);
+			let categoryName = MASTERGROCERYLIST.getListName(charSeqToMatch, indexOfBtn);
 
-		// Still need to update groceryLists in code to reflect the changes from adding an item to the html doc
+			let newLabel = document.createElement('LABEL');
+			let newInput = document.createElement('INPUT');
+			let newText = document.createTextNode(`${groceryToAdd}`);
+
+			newInput.setAttribute('type', 'checkbox');
+			newInput.setAttribute('name', `${categoryName}[]`);
+			newInput.setAttribute('value', `${groceryToAdd}`);
+
+			newLabel.appendChild(newInput);
+			newLabel.appendChild(newText);
+
+			MASTERGROCERYLIST.setCheckboxEvents(newLabel.firstElementChild);
+			document.querySelector(`div[name=${categoryName}]`).appendChild(newLabel);
+			// MASTERGROCERYLIST.groceryLists[categoryName].checkboxes.push(newInput);
+		}
 	}
 
 	editGroceryName(e){
-		// console.log(this, e.target.value);
 		this.setAttribute('value', e.target.value);
 	}
 
-	getListName(charSeq){
-		return this.listNames.filter(a => a.slice(0,4) === charSeq);
+	removeGroceryItem(e){
+		// console.log(e.target, e.target.parentElement.innerText);
+		if(e.target.checked === true){
+			// console.log('Removing Item');
+			// There's a lot of cool things you can try instead of just removing the item from the list
+			// Maybe playing a small animation highlighting the item
+			// then just adding a line-through effect to the innerText and leaving the item on the list
+			e.target.parentElement.remove();
+		}
+	}
+
+	getListName(charSeq, index){
+		return this.listNames.filter(a => a.slice(0,index) === charSeq);
+	}
+
+	setCheckboxEvents(element){
+		element.addEventListener('click', this.removeGroceryItem);
 	}
 }

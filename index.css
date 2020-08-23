@@ -1,5 +1,13 @@
 *{
-	border: 1px solid rgba(0,0,0,.2);
+	border: 1px solid rgba(0,0,0,.12);
+}
+
+body{
+	padding: 2px;
+}
+
+header{
+	margin-bottom: .4rem;
 }
 
 .flex-container{
@@ -7,7 +15,33 @@
 	justify-content: space-around;
 	align-content: center;
 	flex-flow: column wrap;
+	padding: 5px;
 }
+
+.header-container{
+	padding: .5rem;
+	margin: 2%;
+}
+
+.nav-bar-container{
+	padding: .5rem;
+}
+
+.nav-bar-container h1{
+	padding: 10px;
+}
+
+#twitter-handle{
+	justify-content: center;
+	text-align: center;
+	padding: 1%;
+}
+
+/*.fas{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}*/
 
 .grocery-list-container{
 	align-self: center;
