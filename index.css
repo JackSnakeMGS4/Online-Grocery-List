@@ -18,6 +18,7 @@ header{
 	padding: 5px;
 }
 
+/*Header Elements*/
 .header-container{
 	padding: .5rem;
 	margin: 2%;
@@ -37,11 +38,17 @@ header{
 	padding: 1%;
 }
 
-/*.fas{
-	display: flex;
-	justify-content: center;
-	align-content: center;
-}*/
+/*Main Grocery List Elements*/
+.grocery-category{
+	padding: 5px;
+	margin: 5px;
+}
+
+.grocery-type{
+	text-align: center;
+	padding: 10px;
+	margin: .3rem;
+}
 
 .grocery-list-container{
 	display: flex;
@@ -83,15 +90,16 @@ header{
 				1px 2px 2px rgba(0,0,0,.1) inset;
 }
 
-.grocery-category{
-	padding: 5px;
-	margin: 5px;
+/*Control Elements*/
+.controls-container{
+	display: flex;
+	border: 0px;
+	justify-content: center;
 }
 
-.grocery-type{
-	text-align: center;
-	padding: 10px;
-	margin: .3rem;
+.controls-container>*{
+	align-self: center;
+	margin: .25rem;
 }
 
 .addItemButton{
@@ -119,12 +127,6 @@ header{
 	top:1px;
 }
 
-.addItemButton + span{
-	padding: 2px;
-	margin-left: 2px;
-	text-align: center;
-}
-
 .addItemButton ~ label{
 	border: 0px;
 }
@@ -136,11 +138,3 @@ header{
 .addItemButton ~ label input[type=text]:hover{
 	background-color: rgba(0,0,0,.1);
 }
-
-/*.addItemButton + label + label input[type=text]:hover{
-	background-color: rgba(0,0,0,.1);
-}
-
-#meatsBtn + label + label input[type=text]:hover{
-	background-color: rgba(0,0,0,.1);
-}*/
