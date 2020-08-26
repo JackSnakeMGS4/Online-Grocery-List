@@ -9,16 +9,17 @@ class MasterGroceryList{
 		for(let i = 0; i < listContainers.length; i++){
 			this.listNames.push(listContainers[i].getAttribute('name'));
 			this.groceryLists[this.listNames[i]] = {list: listContainers[i].children};
-
-			/*this.groceryLists[this.listNames[i]]
-				.checkboxes = [...document.querySelectorAll(`input[name='${this.listNames[i]}[]']`)];*/
 		}
-		this.listNames.sort();
+		// this.listNames.sort();
 
 		// This is brute force code; needs to be optimized later if possible
 		for(let i = 0; i < this.listNames.length; i++){
 			for(let j = 0; j < this.groceryLists[this.listNames[i]].list.length; j++){
-				this.setCheckboxEvents(this.groceryLists[this.listNames[i]].list[j].firstElementChild);
+				let trashIcon = this.groceryLists[this.listNames[i]]
+									.list[j]
+									.querySelector('.fa-trash-alt');
+
+				this.setTrashEvents(trashIcon);
 			}
 		}
 	}
@@ -28,27 +29,41 @@ class MasterGroceryList{
 			let currentButton = document.getElementById(`${this.listNames[i]}Btn`);
 			currentButton.addEventListener('click', this.addGroceryItem);
 
-			let currentNameLabel = document.querySelector(`#${this.listNames[i]}Btn + label  input[type=text]`);
-			currentNameLabel.addEventListener('change',this.editGroceryName);
+			let currentNameLabel = document.querySelector(`#${this.listNames[i]}Btn + label input[type=text]`);
+			currentNameLabel.addEventListener('change', this.editGroceryName);
+
+			let currentQuantityInput = document.getElementsByName(`${this.listNames[i]}Quantity`)[0];
+			currentQuantityInput.addEventListener('change', this.editGroceryQuantity);
 
 			this.groceryLists[this.listNames[i]].button = currentButton;
 			this.groceryLists[this.listNames[i]].inputLabel = currentNameLabel;
+			this.groceryLists[this.listNames[i]].quantityInput = currentQuantityInput;
 		}
 	}
 
 	addGroceryItem(e){
-		let groceryToAdd = document.querySelector(`#${this.getAttribute('id')} + label  input[type=text]`).getAttribute('value');
+		let charSeqToMatch = this.id;
+		let indexOfBtn = charSeqToMatch.indexOf('B');
 
-		if(groceryToAdd != "" && groceryToAdd != null){
-			let charSeqToMatch = this.getAttribute('id');
-			let indexOfBtn = charSeqToMatch.indexOf('B');
-			charSeqToMatch = charSeqToMatch.slice(0, indexOfBtn);
+		// slice off the Btn from the button's ID so we can match the grocery list by property I.E. meatsBtn becomes meats which can then be matched to groceryLists[meats]
+		charSeqToMatch = charSeqToMatch.slice(0, indexOfBtn);
+		let categoryName = MASTERGROCERYLIST.getListName(charSeqToMatch, indexOfBtn);
 
-			let categoryName = MASTERGROCERYLIST.getListName(charSeqToMatch, indexOfBtn);
+		let groceryToAdd = MASTERGROCERYLIST.groceryLists[charSeqToMatch].inputLabel.value;
+		let quantity = MASTERGROCERYLIST.groceryLists[charSeqToMatch].quantityInput.value;;
 
+		if((groceryToAdd != "" && groceryToAdd != null) &&
+			(quantity != "" && quantity != null)){
 			let newLabel = document.createElement('LABEL');
 			let newInput = document.createElement('INPUT');
 			let newText = document.createTextNode(`${groceryToAdd}`);
+
+			let newQuantity = document.createElement('SPAN');
+			let quantityText = document.createTextNode(`${quantity}`);
+			newQuantity.appendChild(quantityText);
+
+			let newIcon = document.createElement('I');
+			newIcon.classList.add('fas', 'fa-trash-alt');
 
 			newInput.setAttribute('type', 'checkbox');
 			newInput.setAttribute('name', `${categoryName}[]`);
@@ -56,25 +71,30 @@ class MasterGroceryList{
 
 			newLabel.appendChild(newInput);
 			newLabel.appendChild(newText);
+			newLabel.appendChild(newQuantity);
+			newLabel.appendChild(newIcon);
 
-			MASTERGROCERYLIST.setCheckboxEvents(newLabel.firstElementChild);
+			MASTERGROCERYLIST.setTrashEvents(newLabel.querySelector('.fa-trash-alt'));
 			document.querySelector(`div[name=${categoryName}]`).appendChild(newLabel);
-			// MASTERGROCERYLIST.groceryLists[categoryName].checkboxes.push(newInput);
 		}
 	}
 
 	editGroceryName(e){
-		this.setAttribute('value', e.target.value);
+		this.setAttribute('value', this.value);
+	}
+
+	editGroceryQuantity(e){
+		this.setAttribute('value', this.value);
 	}
 
 	removeGroceryItem(e){
-		// console.log(e.target, e.target.parentElement.innerText);
-		if(e.target.checked === true){
+		// console.log(this);
+		if(this.tagName === 'I'){
 			// console.log('Removing Item');
 			// There's a lot of cool things you can try instead of just removing the item from the list
 			// Maybe playing a small animation highlighting the item
 			// then just adding a line-through effect to the innerText and leaving the item on the list
-			e.target.parentElement.remove();
+			this.parentElement.remove();
 		}
 	}
 
@@ -82,7 +102,7 @@ class MasterGroceryList{
 		return this.listNames.filter(a => a.slice(0,index) === charSeq);
 	}
 
-	setCheckboxEvents(element){
+	setTrashEvents(element){
 		element.addEventListener('click', this.removeGroceryItem);
 	}
 }

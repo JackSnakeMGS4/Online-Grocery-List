@@ -44,6 +44,8 @@ header{
 }*/
 
 .grocery-list-container{
+	display: flex;
+	flex-flow: row wrap;
 	align-self: center;
 	justify-content: center;
 	margin: .3rem;
@@ -56,6 +58,29 @@ header{
 	margin: .65%;
 	text-align: center;
 	justify-content: center;
+	align-self: center;
+}
+
+.grocery-list-container label i{
+	display: flex;
+	border: 0px;
+	margin-left: .5rem;
+}
+
+.grocery-list-container label input[type=checkbox]{
+	align-self: center;
+}
+
+.grocery-list-container label span{
+	margin-left: 5px;
+	width: 2rem;
+	height: 1rem;
+	align-self: center;
+}
+
+.grocery-list-container label span:hover{
+	box-shadow: -1px -2px 2px rgba(0,0,0,.1) inset,
+				1px 2px 2px rgba(0,0,0,.1) inset;
 }
 
 .grocery-category{
@@ -100,10 +125,22 @@ header{
 	text-align: center;
 }
 
-.addItemButton + label{
+.addItemButton ~ label{
 	border: 0px;
 }
 
-.addItemButton + label input[type=text]:hover{
+.addItemButton ~ label + input[type=text]{
+	border: 0px;
+}
+
+.addItemButton ~ label input[type=text]:hover{
 	background-color: rgba(0,0,0,.1);
 }
+
+/*.addItemButton + label + label input[type=text]:hover{
+	background-color: rgba(0,0,0,.1);
+}
+
+#meatsBtn + label + label input[type=text]:hover{
+	background-color: rgba(0,0,0,.1);
+}*/

@@ -19,8 +19,6 @@
 				</div>
 
 				<h3 id="twitter-handle">@HangedTarotMan</h3>
-				<!-- Trash bin icon is for debugging purposes -->
-				<i class="fas fa-trash-alt"></i>
 			</div>
 		</div>
 	</header>
@@ -37,13 +35,31 @@
 
 					<!-- NOTE: IMPLEMENT CSS STYLING/COOL LOOKS AS NEEDED BY PROGRAMMING REQUIREMENTS -->
 					<div class="grocery-list-container" name="meats">
-							<label><input type="checkbox" name="meats[]">Chicken</label>
-							<label><input type="checkbox" name="meats[]">Ground Beef</label>
-							<label><input type="checkbox" name="meats[]">Ham</label>
+							<label>
+								<input type="checkbox" name="meats[]">Chicken
+								<i class="fas fa-trash-alt"></i>
+							</label>
+							<label>
+								<input type="checkbox" name="meats[]">Ground Beef
+								<i class="fas fa-trash-alt"></i>
+							</label>
+							<label>
+								<input type="checkbox" name="meats[]">Ham
+								<i class="fas fa-trash-alt"></i>
+							</label>
+
 					</div>
+
 					<!-- All new categories must implement p tag buttons using an ID of categoryNameBtn. Remember camelCase!!! -->
-					<p class="addItemButton" id="meatsBtn">Add Meat</p>
-					<label for="meatName"><input type="text" name="meatName" placeholder="Pork"></label>
+					<div class="controls-container">
+						<p class="addItemButton" id="meatsBtn">Add Meat</p>
+						<label for="meatName">
+							<input type="text" name="meatName" placeholder="Pork">
+						</label>
+						<label for="meatsQuantity">
+							<input type="text" name="meatsQuantity" placeholder="Quantity in X units">
+						</label>
+					</div>
 				</div>
 
 				<div class="grocery-category">
@@ -52,12 +68,29 @@
 					</div>
 
 					<div class="grocery-list-container" name="seafoods">
-							<label><input type="checkbox" name="seafoods[]"/>Salmon</label>
-							<label><input type="checkbox" name="seafoods[]"/>Crab</label>
-							<label><input type="checkbox" name="seafoods[]"/>Halibut</label>
+							<label>
+								<input type="checkbox" name="seafoods[]"/>Salmon
+								<i class="fas fa-trash-alt"></i>
+							</label>
+							<label>
+								<input type="checkbox" name="seafoods[]"/>Crab
+								<i class="fas fa-trash-alt"></i>
+							</label>
+							<label>
+								<input type="checkbox" name="seafoods[]"/>Halibut
+								<i class="fas fa-trash-alt"></i>
+							</label>
 					</div>
-					<p class="addItemButton" id="seafoodsBtn">Add Seafood</p>
-					<label for="seafoodName"><input type="text" name="seafoodName" placeholder="Tuna"></label>
+
+					<div class="controls-container">
+						<p class="addItemButton" id="seafoodsBtn">Add Seafood</p>
+						<label for="seafoodName">
+							<input type="text" name="seafoodName" placeholder="Tuna">
+						</label>
+						<label for="meatsQuantity">
+							<input type="text" name="seafoodsQuantity" placeholder="Quantity in X units">
+						</label>
+					</div>
 				</div>
 
 				<div class="grocery-category">
@@ -66,12 +99,29 @@
 					</div>
 
 					<div class="grocery-list-container" name="veggies">
-							<label><input type="checkbox" name="veggies[]"/>Broccoli</label>
-							<label><input type="checkbox" name="veggies[]"/>Tomatoes</label>
-							<label><input type="checkbox" name="veggies[]"/>Onions</label>
+							<label>
+								<input type="checkbox" name="veggies[]"/>Broccoli
+								<i class="fas fa-trash-alt"></i>
+							</label>
+							<label>
+								<input type="checkbox" name="veggies[]"/>Tomatoes
+								<i class="fas fa-trash-alt"></i>
+							</label>
+							<label>
+								<input type="checkbox" name="veggies[]"/>Onions
+								<i class="fas fa-trash-alt"></i>
+							</label>
 					</div>
-					<p class="addItemButton" id="veggiesBtn">Add Veggies</p>
-					<label for="vegetableName"><input type="text" name="vegetableName" placeholder="Carrots"></label>
+
+					<div class="controls-container">
+						<p class="addItemButton" id="veggiesBtn">Add Veggies</p>
+						<label for="vegetableName">
+							<input type="text" name="vegetableName" placeholder="Carrots">
+						</label>
+						<label for="meatsQuantity">
+							<input type="text" name="veggiesQuantity" placeholder="Quantity in X units">
+						</label>
+					</div>
 				</div>
 
 				<div class="grocery-category">
@@ -80,12 +130,29 @@
 					</div>
 
 					<div class="grocery-list-container" name="fruits">
-							<label><input type="checkbox" name="fruits[]"/>Bananas</label>
-							<label><input type="checkbox" name="fruits[]"/>Watermelon</label>
-							<label><input type="checkbox" name="fruits[]"/>Strawberries</label>
+							<label>
+								<input type="checkbox" name="fruits[]"/>Bananas
+								<i class="fas fa-trash-alt"></i>
+							</label>
+							<label>
+								<input type="checkbox" name="fruits[]"/>Watermelon
+								<i class="fas fa-trash-alt"></i>
+							</label>
+							<label>
+								<input type="checkbox" name="fruits[]"/>Strawberries
+								<i class="fas fa-trash-alt"></i>
+							</label>
 					</div>
-					<p class="addItemButton" id="fruitsBtn">Add Fruits</p>
-					<label for="fruitName"><input type="text" name="fruitName" placeholder="Cherries"></label>
+
+					<div class="controls-container">
+						<p class="addItemButton" id="fruitsBtn">Add Fruits</p>
+						<label for="fruitName">
+							<input type="text" name="fruitName" placeholder="Cherries">
+						</label>
+						<label for="meatsQuantity">
+							<input type="text" name="fruitsQuantity" placeholder="Quantity in X units">
+						</label>
+					</div>
 				</div>
 
 				<!-- following div is a nested flex container -->
@@ -96,12 +163,26 @@
 						</div>
 
 						<div class="grocery-list-container" name="desserts">
-								<label><input type="checkbox" name="desserts[]"/>Ice Cream</label>
-								<label><input type="checkbox" name="desserts[]"/>Cheesecake</label>
-								<label><input type="checkbox" name="desserts[]"/>Chocolate</label>
+								<label>
+									<input type="checkbox" name="desserts[]"/>Ice Cream
+									<i class="fas fa-trash-alt"></i>
+								</label>
+								<label>
+									<input type="checkbox" name="desserts[]"/>Cheesecake
+									<i class="fas fa-trash-alt"></i>
+								</label>
+								<label>
+									<input type="checkbox" name="desserts[]"/>Chocolate
+									<i class="fas fa-trash-alt"></i>
+								</label>
 						</div>
 						<p class="addItemButton" id="dessertsBtn">Add Desserts</p>
-						<label for="dessertName"><input type="text" name="dessertName" placeholder="Oreos"></label>
+						<label for="dessertName">
+							<input type="text" name="dessertName" placeholder="Oreos">
+						</label>
+						<label for="meatsQuantity">
+							<input type="text" name="dessertsQuantity" placeholder="Quantity in X units">
+						</label>
 					</div>
 
 					<div class="grocery-category">
@@ -110,12 +191,29 @@
 						</div>
 
 						<div class="grocery-list-container" name="others">
-								<label><input type="checkbox" name="others[]"/>Powder Sugar</label>
-								<label><input type="checkbox" name="others[]"/>Pancake Mix</label>
-								<label><input type="checkbox" name="others[]"/>Baking Powder</label>
+								<label>
+									<input type="checkbox" name="others[]"/>Powder Sugar
+									<i class="fas fa-trash-alt"></i>
+								</label>
+								<label>
+									<input type="checkbox" name="others[]"/>Pancake Mix
+									<i class="fas fa-trash-alt"></i>
+								</label>
+								<label>
+									<input type="checkbox" name="others[]"/>Baking Powder
+									<i class="fas fa-trash-alt"></i>
+								</label>
 						</div>
-						<p class="addItemButton" id="othersBtn">Add Something Else</p>
-						<label for="otherName"><input type="text" name="otherName" placeholder="Coca-Cola"></label>
+
+						<div class="controls-container">
+							<p class="addItemButton" id="othersBtn">Add Something Else</p>
+							<label for="otherName">
+								<input type="text" name="otherName" placeholder="Coca-Cola">
+							</label>
+							<label for="meatsQuantity">
+								<input type="text" name="othersQuantity" placeholder="Quantity in X units">
+							</label>
+						</div>
 					</div>
 				</div>
 			</div>
