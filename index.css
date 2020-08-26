@@ -1,3 +1,12 @@
+/*Animation Declarations*/
+@keyframes shrinkAndGrow{
+	0%{ transform: scale(1) }
+	25%{ transform: scale(.8) }
+	50%{ transform: scale(1.2) }
+	100%{ transform: scale(1) }
+}
+
+/*CSS Stylings*/
 *{
 	border: 1px solid rgba(0,0,0,.12);
 }
@@ -95,6 +104,9 @@ header{
 	display: flex;
 	border: 0px;
 	justify-content: center;
+	border-radius: 3px;
+	background-color: rgba(0,0,0,.32);
+	box-shadow: 0px -2px 1px rgba(255,255,255,0.6) inset;
 }
 
 .controls-container>*{
@@ -131,10 +143,61 @@ header{
 	border: 0px;
 }
 
-.addItemButton ~ label + input[type=text]{
+.addItemButton ~ label input[type=text]{
 	border: 0px;
+	outline: none;
 }
 
-.addItemButton ~ label input[type=text]:hover{
-	background-color: rgba(0,0,0,.1);
+.addItemButton ~ label input[type=text]:focus{
+	animation: shrinkAndGrow .8s cubic-bezier(.41,-0.39,.69,.93);
+}
+
+/*Category Creation Elements*/
+.category-creation-container{
+	display: flex;
+	justify-content: space-around;
+	align-self: flex-start;
+	margin: .25rem auto;
+	position: sticky;
+	bottom: 1rem;
+	border: 4px solid rgba(0,0,150,0.43);
+	border-radius: .5rem;
+}
+
+.category-controls{
+	display: flex;
+	border: 0px;
+	background-color: rgba(0,0,0,.32);
+	border-radius: .25rem;
+	padding: 0 5px;
+}
+
+.addCategoryButton{
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.addCategoryButton:hover{
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.addCategoryButton:active{
+	position:relative;
+	top:1px;
+}
+
+.addCategoryButton ~ label{
+	border: 0px;
+	align-self: center;
 }
