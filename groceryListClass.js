@@ -1,3 +1,6 @@
+// NOTE: Refactor class into more dynamic/concise code after completing category
+// removal/creation (including the generic ones) and checkbox event features
+
 class MasterGroceryList{
 	constructor(){
 		this.allListContainers = document.getElementsByClassName("grocery-list-container");
@@ -50,7 +53,7 @@ class MasterGroceryList{
 	addCategory(e){
 		// console.log('adding category', this);
 		let categoryName = document.querySelector(`#${this.id} + label input`).value;
-		let lowerCaseName = categoryName.toLowerCase();
+		let lowerCaseName = categoryName.toLowerCase()+'s';
 		let categoryHierarchy = document.querySelector(`#${this.id} + label + label input`).value;
 		categoryHierarchy = categoryHierarchy.toLowerCase();
 
@@ -64,16 +67,16 @@ class MasterGroceryList{
 					${categoryName}
 				</div>
 
-				<div class="grocery-list-container" name="${lowerCaseName}s">
+				<div class="grocery-list-container" name="${lowerCaseName}">
 				</div>
 
 				<div class="controls-container">
-					<p class="addItemButton" id="${lowerCaseName}sBtn">Add Something Else</p>
+					<p class="addItemButton" id="${lowerCaseName}Btn">Add ${categoryName}</p>
 					<label for="${lowerCaseName}Name">
 						<input type="text" name="${lowerCaseName}Name" placeholder="Rigatoni">
 					</label>
-					<label for="${lowerCaseName}sQuantity">
-						<input type="text" name="${lowerCaseName}sQuantity" placeholder="Quantity in X units">
+					<label for="${lowerCaseName}Quantity">
+						<input type="text" name="${lowerCaseName}Quantity" placeholder="Quantity in X units">
 					</label>
 				</div>`;
 
@@ -81,6 +84,11 @@ class MasterGroceryList{
 			let subList = document.querySelector('.grocery-subcategories');
 
 			categoryHierarchy === 'main' ? mainList.insertBefore(div,subList) : subList.appendChild(div);
+
+			MASTERGROCERYLIST.listNames.push(lowerCaseName);
+			MASTERGROCERYLIST.groceryLists[lowerCaseName] = {list: document.querySelector(`div [name=${lowerCaseName}]`).children};
+
+			MASTERGROCERYLIST.setNewCatEvents(lowerCaseName);
 		}
 	}	
 
@@ -134,12 +142,33 @@ class MasterGroceryList{
 		}
 	}
 
+	removeCategory(e){
+		console.log(this);
+		// check if the icon being clicked has a class of .category-delete
+		// then remove the entire category: should be something like this.parentElement.parentElement(remove);
+	}
+
 	getListName(charSeq, index){
 		return this.listNames.filter(a => a.slice(0,index) === charSeq);
 	}
 
 	setTrashEvents(element){
 		element.addEventListener('click', this.removeGroceryItem);
+	}
+
+	setNewCatEvents(listName){
+		let currentButton = document.getElementById(`${listName}Btn`);
+		currentButton.addEventListener('click', this.addGroceryItem);
+
+		let currentNameLabel = document.querySelector(`#${listName}Btn + label input[type=text]`);
+		currentNameLabel.addEventListener('change', this.editName);
+
+		let currentQuantityInput = document.getElementsByName(`${listName}Quantity`)[0];
+		currentQuantityInput.addEventListener('change', this.editQuantity);
+
+		this.groceryLists[listName].button = currentButton;
+		this.groceryLists[listName].inputLabel = currentNameLabel;
+		this.groceryLists[listName].quantityInput = currentQuantityInput;
 	}
 
 	editName(e){

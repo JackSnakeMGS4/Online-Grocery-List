@@ -79,9 +79,10 @@ header{
 }
 
 .grocery-type{
-	text-align: center;
+	display: flex;
 	padding: 10px;
 	margin: .3rem;
+	justify-content: space-around;
 }
 
 .grocery-list-container{
@@ -130,6 +131,10 @@ header{
 .grocery-subcategories{
 	margin:.5rem;
 }
+
+.category-delete{
+
+}	
 
 /*Control Elements*/
 .controls-container{
