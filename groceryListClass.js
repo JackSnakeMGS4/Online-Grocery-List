@@ -4,17 +4,21 @@
 class MasterGroceryList{
 	constructor(){
 		this.allListContainers = document.getElementsByClassName("grocery-list-container");
+		this.allCategories = document.getElementsByClassName('grocery-category');
 		this.groceryLists = {};
 		this.listNames = [];
 		this.categoryCreationKit;
 	}
 
-	loadGroceryLists(listContainers){
+	loadGroceryLists(){
 		this.categoryCreationKit = document.querySelector('.category-creation-container').children[0];
 
-		for(let i = 0; i < listContainers.length; i++){
-			this.listNames.push(listContainers[i].getAttribute('name'));
-			this.groceryLists[this.listNames[i]] = {list: listContainers[i].children};
+		for(let i = 0; i < this.allCategories.length; i++){
+			this.listNames.push(this.allListContainers[i].getAttribute('name'));
+			this.groceryLists[this.listNames[i]] = {list: this.allListContainers[i].children};
+
+			let categoryTrash = this.allCategories[i].querySelector('.grocery-type i');
+			categoryTrash.addEventListener('click', this.removeCategory);
 		}
 
 		// This is brute force code; needs to be optimized later if possible
@@ -50,47 +54,6 @@ class MasterGroceryList{
 		this.categoryCreationKit.querySelector('p').addEventListener('click', this.addCategory);
 	}
 
-	addCategory(e){
-		// console.log('adding category', this);
-		let categoryName = document.querySelector(`#${this.id} + label input`).value;
-		let lowerCaseName = categoryName.toLowerCase()+'s';
-		let categoryHierarchy = document.querySelector(`#${this.id} + label + label input`).value;
-		categoryHierarchy = categoryHierarchy.toLowerCase();
-
-		// Use validations on the inputs instead checking it in code and run the code below only if the validation reqs are satisfied
-		if((categoryName != "" && categoryName != null) && 
-			(categoryHierarchy === 'main' || categoryHierarchy === 'sub')){
-			let div = document.createElement('DIV');
-			div.classList.add('grocery-category');
-			div.innerHTML = 
-				`<div class="grocery-type">
-					${categoryName}
-				</div>
-
-				<div class="grocery-list-container" name="${lowerCaseName}">
-				</div>
-
-				<div class="controls-container">
-					<p class="addItemButton" id="${lowerCaseName}Btn">Add ${categoryName}</p>
-					<label for="${lowerCaseName}Name">
-						<input type="text" name="${lowerCaseName}Name" placeholder="Rigatoni">
-					</label>
-					<label for="${lowerCaseName}Quantity">
-						<input type="text" name="${lowerCaseName}Quantity" placeholder="Quantity in X units">
-					</label>
-				</div>`;
-
-			let mainList = document.querySelector('#master-list');
-			let subList = document.querySelector('.grocery-subcategories');
-
-			categoryHierarchy === 'main' ? mainList.insertBefore(div,subList) : subList.appendChild(div);
-
-			MASTERGROCERYLIST.listNames.push(lowerCaseName);
-			MASTERGROCERYLIST.groceryLists[lowerCaseName] = {list: document.querySelector(`div [name=${lowerCaseName}]`).children};
-
-			MASTERGROCERYLIST.setNewCatEvents(lowerCaseName);
-		}
-	}	
 
 	addGroceryItem(e){
 		let charSeqToMatch = this.id;
@@ -134,18 +97,59 @@ class MasterGroceryList{
 	removeGroceryItem(e){
 		// console.log(this);
 		if(this.tagName === 'I'){
-			// console.log('Removing Item');
-			// There's a lot of cool things you can try instead of just removing the item from the list
-			// Maybe playing a small animation highlighting the item
-			// then just adding a line-through effect to the innerText and leaving the item on the list
 			this.parentElement.remove();
 		}
 	}
 
+	addCategory(e){
+		// console.log('adding category', this);
+		let categoryName = document.querySelector(`#${this.id} + label input`).value;
+		let lowerCaseName = categoryName.toLowerCase()+'s';
+		let categoryHierarchy = document.querySelector(`#${this.id} + label + label input`).value;
+		categoryHierarchy = categoryHierarchy.toLowerCase();
+
+		// Use validations on the inputs instead checking it in code and run the code below only if the validation reqs are satisfied
+		if((categoryName != "" && categoryName != null) && 
+			(categoryHierarchy === 'main' || categoryHierarchy === 'sub')){
+			let div = document.createElement('DIV');
+			div.classList.add('grocery-category');
+			div.innerHTML = 
+				`<div class="grocery-type">
+					${categoryName}
+					<i class="fas fa-trash-alt category-delete"></i>
+				</div>
+
+				<div class="grocery-list-container" name="${lowerCaseName}">
+				</div>
+
+				<div class="controls-container">
+					<p class="addItemButton" id="${lowerCaseName}Btn">Add ${categoryName}</p>
+					<label for="${lowerCaseName}Name">
+						<input type="text" name="${lowerCaseName}Name" placeholder="Rigatoni">
+					</label>
+					<label for="${lowerCaseName}Quantity">
+						<input type="text" name="${lowerCaseName}Quantity" placeholder="Quantity in X units">
+					</label>
+				</div>`;
+			div.querySelector('.grocery-type i').addEventListener('click', MASTERGROCERYLIST.removeCategory);
+
+			let mainList = document.querySelector('#master-list');
+			let subList = document.querySelector('.grocery-subcategories');
+
+			categoryHierarchy === 'main' ? mainList.insertBefore(div,subList) : subList.appendChild(div);
+
+			MASTERGROCERYLIST.listNames.push(lowerCaseName);
+			MASTERGROCERYLIST.groceryLists[lowerCaseName] = {list: document.querySelector(`div [name=${lowerCaseName}]`).children};
+
+			MASTERGROCERYLIST.setNewCatEvents(lowerCaseName);
+		}
+	}
+
 	removeCategory(e){
-		console.log(this);
-		// check if the icon being clicked has a class of .category-delete
-		// then remove the entire category: should be something like this.parentElement.parentElement(remove);
+		// console.log(this);
+		if(this.tagName === "I"){
+			this.parentElement.parentElement.remove();
+		}
 	}
 
 	getListName(charSeq, index){

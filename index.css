@@ -44,6 +44,15 @@ header{
 	margin-bottom: .4rem;
 }
 
+input[type=text]{
+	border: 0;
+	outline: none;
+}
+
+input[type=text]:focus{
+	animation: shrinkAndGrow .6s cubic-bezier(.41,-0.39,.69,.93);
+}
+
 .flex-container{
 	display: flex;
 	justify-content: space-around;
@@ -180,15 +189,6 @@ header{
 	border: 0px;
 }
 
-.addItemButton ~ label input[type=text]{
-	border: 0px;
-	outline: none;
-}
-
-.addItemButton ~ label input[type=text]:focus{
-	animation: shrinkAndGrow .6s cubic-bezier(.41,-0.39,.69,.93);
-}
-
 /*Category Creation Elements*/
 .category-creation-container{
 	display: flex;
@@ -240,5 +240,4 @@ header{
 
 #categoryBtn ~ label{
 	border: 0px;
-	align-self: center;
 }
