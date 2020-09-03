@@ -133,7 +133,7 @@ class MasterGroceryList{
 				</div>`;
 			div.querySelector('.grocery-type i').addEventListener('click', MASTERGROCERYLIST.removeCategory);
 
-			let mainList = document.querySelector('#master-list');
+			let mainList = document.querySelector('#masterList');
 			let subList = document.querySelector('.grocery-subcategories');
 
 			categoryHierarchy === 'main' ? mainList.insertBefore(div,subList) : subList.appendChild(div);

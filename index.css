@@ -1,3 +1,13 @@
+/*
+	Color Scheme:
+	primary: #D8BFDB
+	secondary: #D1DBB4
+	tertiary: #758F6E
+
+	secondary backup: #868F6E
+	tertiary backup: #CDE8C5
+*/
+
 /*Animation Declarations*/
 @keyframes shrinkAndGrow{
 	0%{ transform: scale(1) }
@@ -31,7 +41,9 @@
 
 /*CSS Stylings*/
 *{
-	border: 1px solid rgba(0,0,0,.12);
+	/*border: 1px solid rgba(0,0,0,.12);*/
+	border-radius: 5px;
+	color: #CDE8C5;
 }
 
 body{
@@ -45,7 +57,7 @@ header{
 }
 
 input[type=text]{
-	border: 0;
+	border: 0px;
 	outline: none;
 }
 
@@ -58,13 +70,27 @@ input[type=text]:focus{
 	justify-content: space-around;
 	align-content: center;
 	flex-flow: column wrap;
-	padding: 5px;
+	padding: 1rem;
+	background: #758F6E;
+}
+
+#masterList{
+	background: #D8BEDB;
 }
 
 /*Header Elements*/
+header .flex-container{
+	background: #758F6E;
+}
+
 .header-container{
 	padding: .5rem;
 	margin: 2%;
+	width: 98%;
+	background: #868F6E;
+	border: 1px solid #D1DBB4;
+	box-shadow: 0px 1.5px 3px #D1DBB4,
+				inset 0px -2px 2px #D1DBB4;
 }
 
 .nav-bar-container{
@@ -73,6 +99,9 @@ input[type=text]:focus{
 
 .nav-bar-container h1{
 	padding: 10px;
+	justify-content: center;
+	text-align: center;
+	font-size: 40px;
 }
 
 #twitter-handle{
@@ -85,6 +114,11 @@ input[type=text]:focus{
 .grocery-category{
 	padding: 5px;
 	margin: 5px;
+	background: #DBDEAF;
+}
+
+.grocery-category > *{
+	background: #6E8F74;
 }
 
 .grocery-type{
@@ -110,11 +144,11 @@ input[type=text]:focus{
 	text-align: center;
 	justify-content: center;
 	align-self: center;
+	border: 0px;
 }
 
 .grocery-list-container label i{
 	display: flex;
-	border: 0px;
 	margin-left: .5rem;
 }
 
@@ -138,7 +172,9 @@ input[type=text]:focus{
 }
 
 .grocery-subcategories{
+	padding: .2rem;
 	margin:.5rem;
+	background: #868F6E;
 }
 
 .category-delete{
@@ -148,11 +184,10 @@ input[type=text]:focus{
 /*Control Elements*/
 .controls-container{
 	display: flex;
-	border: 0px;
 	justify-content: center;
 	border-radius: 3px;
 	background-color: rgba(0,0,0,.32);
-	box-shadow: 0px -2px 1px rgba(255,255,255,0.6) inset;
+	box-shadow: 0px -2px 1px rgba(255,255,255,0.5) inset;
 }
 
 .controls-container>*{
@@ -197,14 +232,13 @@ input[type=text]:focus{
 	margin: .5rem auto;
 	position: sticky;
 	bottom: .25rem;
-	border: 4px solid rgba(0,0,150,0.43);
+	border: 4px solid #D8BFDB;
 	border-radius: .5rem;
 }
 
 .category-controls{
-	border: 0px;
-	background-color: rgba(0,0,0,.32);
-	border-radius: .25rem;
+	background-color: #868F6E;
+	border-radius: .20rem;
 	padding: 0 5px;
 }
 
