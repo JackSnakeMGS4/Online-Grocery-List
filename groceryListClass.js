@@ -113,6 +113,7 @@ class MasterGroceryList{
 			(categoryHierarchy === 'main' || categoryHierarchy === 'sub')){
 			let div = document.createElement('DIV');
 			div.classList.add('grocery-category');
+			// THIS IS BAD PRACTICE! Want to avoid using HTML inside of your JS files!
 			div.innerHTML = 
 				`<div class="grocery-type">
 					${categoryName}
