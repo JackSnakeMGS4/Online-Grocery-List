@@ -1,3 +1,4 @@
+console.log(firebase);
 const MASTERGROCERYLIST = new MasterGroceryList();
 
 window.onload = function(){
