@@ -24,7 +24,6 @@
 /* Track */
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
@@ -35,7 +34,6 @@
     border-radius: 10px;
     background: rgba(0,0,150,0.6); 
     -webkit-box-shadow: inset 0 0 4px rgba(255,255,255,0.5); 
-    box-shadow: inset 0 0 4px rgba(255,255,255,0.5); 
 }
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(0,0,150,0.2); 
@@ -107,7 +105,6 @@ header .flex-container{
 }
 
 #twitter-handle{
-	display: flex;
 	justify-content: center;
 	text-align: center;
 	padding: 1%;
@@ -180,9 +177,9 @@ header .flex-container{
 	background: #868F6E;
 }
 
-/* .category-delete{
+.category-delete{
 
-}	 */
+}	
 
 /*Control Elements*/
 .controls-container{
