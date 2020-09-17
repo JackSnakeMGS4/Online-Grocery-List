@@ -1,1 +1,1 @@
-// console.log('webscraper.js loaded');
+console.log('webscraper.js loaded');
