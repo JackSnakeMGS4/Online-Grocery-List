@@ -1,7 +1,7 @@
 const MASTERGROCERYLIST = new MasterGroceryList();
 
-window.onload = function(){
-	// console.log('list.js loaded; window.onload; line 1');
+document.addEventListener('DOMContentLoaded', event =>{
+
 	MASTERGROCERYLIST.loadGroceryLists();
 	MASTERGROCERYLIST.addEventsToBtnsAndNameFields();
-}
+});
